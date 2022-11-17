@@ -4,17 +4,19 @@ class Listview2Screen extends StatelessWidget {
   const Listview2Screen({Key? key}) : super(key: key);
 
   final options = const [
-    'Roger Feder',
-    'Nadal',
-    'Murray',
-    'Deltoro',
-    'Serena W.'
+    'R. Federer',
+    'R. Nadal',
+    'A. Murray',
+    'J.M. Delpotro',
+    'S. Williams'
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.indigo.shade500,
           title: const Text('ListView Tipo 2'),
         ),
         body: ListView.separated(
@@ -22,7 +24,14 @@ class Listview2Screen extends StatelessWidget {
             itemBuilder: (context, index) => ListTile(
                   leading: const Icon(Icons.sports_tennis),
                   title: Text(options[index]),
-                  trailing: const Icon(Icons.arrow_forward_ios),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.indigoAccent,
+                  ),
+                  onTap: () {
+                    final game = options[index];
+                    print(game);
+                  },
                 ),
             separatorBuilder: (_, __) => const Divider()));
   }
